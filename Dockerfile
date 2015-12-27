@@ -9,11 +9,13 @@ RUN mv pydio-core-${PYDIO_VERSION}/* public_html/
 RUN rm -rf pydio-core-${PYDIO_VERSION}
 RUN rm -f pydio.tar.gz
 RUN chown -R www:www public_html
-RUN chmod -R u+rw public_html
+RUN chmod -R a+rw public_html
 
 # Expose Volumes
-VOLUME /usr/www/default/public_html/files
-VOLUME /usr/www/default/public_html/personal
+VOLUME /usr/www/default/public_html/data/files
+VOLUME /usr/www/default/public_html/data/personal
+RUN chown -R www:www /usr/www/default/public_html/data/files /usr/www/default/public_html/data/files
+RUN chmod -R a+rw /usr/www/default/public_html/data/files /usr/www/default/public_html/data/files
 
 # Expose Ports
 EXPOSE 80

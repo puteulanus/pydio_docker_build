@@ -13,8 +13,7 @@ RUN chmod -R a+rw public_html
 
 # Configure
 RUN sed -i "s/output_buffering\s*=\s*4096/output_buffering = Off/g" /etc/php-fpm.conf
-RUN sed -i "s#//define(\"AJXP_LOCALE\", \"en_EN.UTF-8\");
-#define(\"AJXP_LOCALE\", \"en_us.UTF-8\");#" /usr/www/default/public_html/conf/bootstrap_conf.php
+RUN sed -i "s#//define(\"AJXP_LOCALE\", \"en_EN.UTF-8\");#define(\"AJXP_LOCALE\", \"en_us.UTF-8\");#" /usr/www/default/public_html/conf/bootstrap_conf.php
 ADD pydio.conf /tmp/pydio.conf
 RUN mv /tmp/pydio.conf /etc/nginx/conf.d/default.conf
 
